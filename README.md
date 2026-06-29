@@ -107,17 +107,17 @@ npm run dev
 
 ตาราง `shopping_items`:
 
-| คอลัมน์        | ชนิด          | คำอธิบาย                              |
-| -------------- | ------------- | -------------------------------------- |
-| `id`           | `uuid`        | Primary key                            |
-| `user_id`      | `uuid`        | อ้างอิง `auth.users.id`                |
-| `name`         | `text`        | ชื่อสินค้า                             |
-| `quantity`     | `numeric`     | จำนวน                                  |
+| คอลัมน์        | ชนิด          | คำอธิบาย                                |
+| -------------- | ------------- | --------------------------------------- |
+| `id`           | `uuid`        | Primary key                             |
+| `user_id`      | `uuid`        | อ้างอิง `auth.users.id`                 |
+| `name`         | `text`        | ชื่อสินค้า                              |
+| `quantity`     | `numeric`     | จำนวน                                   |
 | `unit`         | `text`        | หน่วย (ชิ้น, กล่อง, กก. ฯลฯ)            |
 | `category`     | `text`        | หมวดหมู่ (12 ค่าที่กำหนดไว้)            |
-| `note`         | `text`        | หมายเหตุ (nullable)                    |
-| `is_purchased` | `boolean`     | สถานะซื้อแล้ว                          |
-| `created_at`   | `timestamptz` | วันเวลาที่สร้าง                        |
+| `note`         | `text`        | หมายเหตุ (nullable)                     |
+| `is_purchased` | `boolean`     | สถานะซื้อแล้ว                           |
+| `created_at`   | `timestamptz` | วันเวลาที่สร้าง                         |
 | `updated_at`   | `timestamptz` | วันเวลาที่แก้ไขล่าสุด (auto by trigger) |
 
 RLS เปิดใช้งานทั้ง 4 policy (select/insert/update/delete) โดยจำกัดด้วย `auth.uid() = user_id`
@@ -127,15 +127,15 @@ RLS เปิดใช้งานทั้ง 4 policy (select/insert/update/de
 
 ## 🛠️ เทคโนโลยีที่ใช้
 
-| ส่วน         | เทคโนโลยี                                |
-| ------------ | ----------------------------------------- |
-| Framework    | SvelteKit 2 + Svelte 4                    |
-| ภาษา         | TypeScript                                |
-| Styling      | Tailwind CSS 3 (custom glass utilities)   |
-| Backend      | Supabase (Postgres, Auth, Realtime)       |
-| Auth         | Supabase Anonymous Sign-In                |
-| Realtime     | `postgres_changes` ผ่าน Supabase Realtime |
-| Hosting      | Vercel / Netlify / Cloudflare Pages       |
+| ส่วน      | เทคโนโลยี                                 |
+| --------- | ----------------------------------------- |
+| Framework | SvelteKit 2 + Svelte 4                    |
+| ภาษา      | TypeScript                                |
+| Styling   | Tailwind CSS 3 (custom glass utilities)   |
+| Backend   | Supabase (Postgres, Auth, Realtime)       |
+| Auth      | Supabase Anonymous Sign-In                |
+| Realtime  | `postgres_changes` ผ่าน Supabase Realtime |
+| Hosting   | Vercel / Netlify / Cloudflare Pages       |
 
 ---
 

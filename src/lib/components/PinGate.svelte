@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher, tick } from 'svelte';
+	import { createEventDispatcher, onMount, tick } from 'svelte';
 	import { fade, scale } from 'svelte/transition';
 
 	const dispatch = createEventDispatcher<{ unlocked: void }>();
@@ -12,6 +12,10 @@
 	let checking = false;
 
 	$: pinValue = digits.join('');
+
+	onMount(() => {
+		focusInput(0);
+	});
 
 	async function focusInput(index: number) {
 		await tick();

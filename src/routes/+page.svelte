@@ -42,12 +42,12 @@
 </script>
 
 <svelte:head>
-  <title>รายการซื้อของ — Shopping Todo</title>
+  <title>3K Shopping Todo</title>
 </svelte:head>
 
-<main class="mx-auto w-full max-w-6xl px-4 py-6 sm:py-10 lg:px-8">
+<main class="w-full max-w-6xl px-4 py-6 mx-auto sm:py-10 lg:px-8">
   <div class="space-y-4">
-    <div class="mx-auto w-full max-w-2xl lg:max-w-none">
+    <div class="w-full max-w-2xl mx-auto sm:max-w-none">
       <StatsHeader
         total={$itemStats.total}
         purchased={$itemStats.purchased}
@@ -55,7 +55,7 @@
       />
     </div>
 
-    <div class="mx-auto w-full max-w-2xl lg:max-w-none">
+    <div class="w-full max-w-2xl mx-auto sm:max-w-none">
       <FilterBar
         search={$shoppingStore.search}
         filterCategory={$shoppingStore.filterCategory}
@@ -67,7 +67,7 @@
     {#if $shoppingStore.loading}
       <div class="flex justify-center py-16">
         <svg
-          class="h-8 w-8 animate-spin text-white"
+          class="w-8 h-8 text-white animate-spin"
           viewBox="0 0 24 24"
           fill="none"
         >
@@ -88,14 +88,11 @@
         </svg>
       </div>
     {:else if $filteredItems.length === 0}
-      <div class="mx-auto w-full max-w-2xl lg:max-w-none">
+      <div class="w-full max-w-2xl mx-auto sm:max-w-none">
         <EmptyState hasItems={$shoppingStore.items.length > 0} />
       </div>
     {:else}
-      <div
-        class="grid gap-3"
-        style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));"
-      >
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {#each $filteredItems as item (item.id)}
           <ItemCard {item} onEdit={openEditPopup} />
         {/each}

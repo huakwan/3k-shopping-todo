@@ -34,12 +34,12 @@
 	}
 </script>
 
-<div class="glass space-y-3 rounded-2xl p-3 shadow-glass sm:p-4">
+<div class="p-3 space-y-3 glass rounded-2xl shadow-glass sm:p-4">
 	<!-- Search + filter toggle -->
 	<div class="flex items-center gap-2">
 		<div class="relative flex-1">
 			<svg
-				class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-white/50"
+				class="absolute -translate-y-1/2 pointer-events-none left-3 top-1/2 text-white/50"
 				width="18"
 				height="18"
 				viewBox="0 0 24 24"
@@ -54,8 +54,8 @@
 				type="search"
 				value={search}
 				on:input={handleSearchInput}
-				placeholder="ค้นหาสินค้า หรือหมายเหตุ..."
-				class="input-field pl-10"
+				placeholder="ค้นหารายการ"
+				class="pl-10 input-field"
 			/>
 		</div>
 		<button
@@ -71,7 +71,7 @@
 	</div>
 
 	{#if showFilters}
-		<div class="space-y-3 border-t border-white/15 pt-3">
+		<div class="pt-3 space-y-3 border-t border-white/15">
 			<!-- Status filter -->
 			<div>
 				<p class="mb-1.5 text-xs font-medium text-white/70">สถานะ</p>
@@ -123,10 +123,10 @@
 				<select
 					value={sort}
 					on:change={handleSortChange}
-					class="input-field appearance-none text-sm"
+					class="text-sm appearance-none input-field"
 				>
 					{#each sortOptions as opt}
-						<option value={opt.id} class="bg-indigo-900 text-white">{opt.label}</option>
+						<option value={opt.id} class="text-white bg-indigo-900">{opt.label}</option>
 					{/each}
 				</select>
 			</div>

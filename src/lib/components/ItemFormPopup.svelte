@@ -97,9 +97,9 @@
 			aria-modal="true"
 			aria-labelledby="popup-title"
 		>
-			<div class="mb-5 flex items-center justify-between">
+			<div class="flex items-center justify-between mb-5">
 				<h2 id="popup-title" class="text-xl font-bold text-white">
-					{editingItem ? '✏️ แก้ไขสินค้า' : '🛒 เพิ่มสินค้าใหม่'}
+					{editingItem ? '✏️ แก้ไขรายการ' : '🪄 เพิ่มรายการซื้อของ'}
 				</h2>
 				<button
 					on:click={close}
@@ -115,7 +115,7 @@
 			<form on:submit|preventDefault={handleSubmit} class="space-y-4">
 				<!-- ชื่อสินค้า -->
 				<div>
-					<label class="label-field" for="item-name">ชื่อสินค้า</label>
+					<label class="label-field" for="item-name">ชื่อรายการ</label>
 					<input
 						id="item-name"
 						bind:this={nameInput}
@@ -136,16 +136,16 @@
 							bind:value={quantity}
 							type="number"
 							min="0"
-							step="0.5"
+							step="1"
 							class="input-field"
 							required
 						/>
 					</div>
 					<div>
 						<label class="label-field" for="item-unit">หน่วย</label>
-						<select id="item-unit" bind:value={unit} class="input-field appearance-none">
+						<select id="item-unit" bind:value={unit} class="appearance-none input-field">
 							{#each UNITS as u}
-								<option value={u} class="bg-indigo-900 text-white">{u}</option>
+								<option value={u} class="text-white bg-indigo-900">{u}</option>
 							{/each}
 						</select>
 					</div>
@@ -179,22 +179,22 @@
 						bind:value={note}
 						rows="2"
 						placeholder="เช่น แบรนด์ที่ชอบ, ขนาด, สี"
-						class="input-field resize-none"
+						class="resize-none input-field"
 					></textarea>
 				</div>
 
 				<div class="flex gap-3 pt-2">
-					<button type="button" on:click={close} class="btn-secondary flex-1">
+					<button type="button" on:click={close} class="flex-1 btn-secondary">
 						ยกเลิก
 					</button>
-					<button type="submit" class="btn-primary flex-1" disabled={submitting}>
+					<button type="submit" class="flex-1 btn-primary" disabled={submitting}>
 						{#if submitting}
-							<svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+							<svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none">
 								<circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.3" />
 								<path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
 							</svg>
 						{:else}
-							{editingItem ? 'บันทึกการแก้ไข' : 'เพิ่มสินค้า'}
+							{editingItem ? 'อัพเดท' : 'เพิ่มรายการ'}
 						{/if}
 					</button>
 				</div>
