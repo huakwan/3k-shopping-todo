@@ -31,6 +31,9 @@
     editingItem = null;
   }
 
+  $: pendingItems = $filteredItems.filter((item) => !item.is_purchased);
+  $: purchasedItems = $filteredItems.filter((item) => item.is_purchased);
+
   onMount(() => {
     shoppingStore.fetchAll();
     shoppingStore.subscribeRealtime();
@@ -92,11 +95,31 @@
         <EmptyState hasItems={$shoppingStore.items.length > 0} />
       </div>
     {:else}
-      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {#each $filteredItems as item (item.id)}
-          <ItemCard {item} onEdit={openEditPopup} />
-        {/each}
-      </div>
+      {#if pendingItems.length > 0}
+        <div class="space-y-3">
+          <h2 class="text-sm font-semibold text-white/70">
+            ยังไม่ซื้อ ({pendingItems.length})
+          </h2>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {#each pendingItems as item (item.id)}
+              <ItemCard {item} onEdit={openEditPopup} />
+            {/each}
+          </div>
+        </div>
+      {/if}
+
+      {#if purchasedItems.length > 0}
+        <div class="pt-2 space-y-3">
+          <h2 class="text-sm font-semibold text-white/70">
+            ซื้อแล้ว ({purchasedItems.length})
+          </h2>
+          <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {#each purchasedItems as item (item.id)}
+              <ItemCard {item} onEdit={openEditPopup} />
+            {/each}
+          </div>
+        </div>
+      {/if}
     {/if}
   </div>
 </main>

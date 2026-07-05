@@ -67,24 +67,26 @@
 				<CategoryBadge category={item.category} size="sm" />
 
 				<div class="flex items-center gap-1.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100 sm:opacity-100">
-					<button
-						on:click={() => onEdit(item)}
-						aria-label="แก้ไขรายการ"
-						class="flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-all hover:bg-white/20 hover:text-white active:scale-90"
-					>
-						<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path
-								d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-							<path
-								d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							/>
-						</svg>
-					</button>
+					{#if !item.is_purchased}
+						<button
+							on:click={() => onEdit(item)}
+							aria-label="แก้ไขรายการ"
+							class="flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-all hover:bg-white/20 hover:text-white active:scale-90"
+						>
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path
+									d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+								<path
+									d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5Z"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+						</button>
+					{/if}
 					<button
 						on:click={handleDelete}
 						aria-label="ลบรายการ"
