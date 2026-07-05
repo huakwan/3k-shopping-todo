@@ -16,21 +16,24 @@ export const CATEGORIES = [
 export type CategoryId = (typeof CATEGORIES)[number]["id"];
 
 export const UNITS = [
+  "หน่วย",
   "ชิ้น",
   "กล่อง",
   "แพ็ค",
   "ถุง",
   "ขวด",
   "กระป๋อง",
-  "กก.",
+  "กิโลกรัม",
   "กรัม",
   "ลิตร",
-  "มล.",
+  "มิลลิลิตร",
   "ฟอง",
   "ลูก",
   "ห่อ",
+  "โหล",
   "มัด",
   "แผง",
+  "กำ"
 ] as const;
 
 export interface ShoppingItem {
